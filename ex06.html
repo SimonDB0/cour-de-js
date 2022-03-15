@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex06</title>
+</head>
+<body>
+<H1>EX06</H1>
+
+<script>
+    console.log(Math.max(1,2,3))
+    // Ma variable doit etre comprise entre 0 et 100
+    var a = 150
+    a = Math.min(a,100) //limite a 100
+    a = Math.max(a,0) //au moins 0
+
+    console.log(a)
+
+    const balise = (n,error) => {
+        n = Math.min(n,100) //limite a 100
+        n = Math.max(n,0) //au moins 0
+        console.log("balise",n)
+        return  n;
+
+    }
+    const tableau = [
+        balise(5),
+        balise(-20),
+        balise(125),
+        balise(48),
+        balise(-134),
+    ]
+    console.log(tableau)
+    console.log(balise(Math.ceil(Math.random()*50)))
+//nombre aleatoire entre 10-20
+let note = Math.ceil(Math.random()*10)+9
+
+    console.log(note)
+
+    //automatiser le nombre aléatoire entre 2 variables
+
+    const random = (min,max) =>{
+        if(max===undefined){
+            max=min
+            min=0
+        }
+        return Math.ceil(Math.random()*(max-min+1))+(min-1)
+    }
+    console.log(random(300,400))
+    console.log(random(300))
+</script>
+</body>
+</html>
