@@ -1,52 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>EX07</title>
+    <title>Exerccie 07</title>
+
+    <style>
+        .color{
+            color: crimson;
+        }
+        .hover{
+            background: #e5e5e5;
+        }
+    </style>
+
 </head>
 <body>
-<h1>Exercice 7</h1>
-<style>
-    .color{
-        color: crimson;
-    }
-    .hover{
-        background: #e5e5e5;
-    }
-</style>
-    <div class="content">
-        <H2>Hello World ! </H2>
-        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. <strong>Dolores</strong> ipsum neque recusandae saepe tempora vitae! Delectus praesentium quae repellendus? Hic, quia?</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti distinctio w<strong>dolor</strong> dolore, laudantium mollitia non porro quia quidem reiciendis ut voluptatem!
-        </p>
-    </div>
+<h1>Exercice 07</h1>
+
+<div class="content">
+
+    <h2>Hello World</h2>
+    <p>
+        Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ac feugiat diam. Vestibulum eu sapien sed augue sodales interdum. Morbi mi odio, facilisis maximus maximus eget, luctus ut risus. <strong>Phasellus elementum</strong> neque nec efficitur finibus. Donec porta fermentum lorem. Nulla sed aliquam eros. Pellentesque vehicula mollis velit, nec tincidunt magna ullamcorper eget. Quisque nec sollicitudin nunc.
+    </p>
+    <h2>Chocolat</h2>
+    <p>
+        Aliquam vitae tempus turpis, rhoncus lacinia tellus. Nunc venenatis, arcu et congue porttitor, ante tellus venenatis tellus, vel commodo dolor mi et massa. <strong>Donec maximus</strong> nisl sed sapien volutpat mollis. Quisque ac nisl consectetur felis faucibus hendrerit at at libero. Praesent nibh elit, varius eget ipsum id, aliquet consequat sapien. Suspendisse quis fringilla sem, sit amet dapibus velit. Aenean et hendrerit neque. Proin nec nisi mi.
+    </p>
+
+</div>
+
+
 <script type="text/javascript">
+
     const content = document.querySelector('.content')
     const paragraphes = content.querySelectorAll('p')
-    const titre = content.querySelectorAll("H2")
+
+    const subtitle = content.querySelectorAll('h2')
+    console.log(subtitle)
+    const titlesSaved = []
+    subtitle.forEach((h2,index) => {
+        titlesSaved.push(h2.innerText)
+        h2.style.color = "#0000ff"
+        h2.setAttribute('id','titre-'+index)
+        h2.innerHTML += ` <a href="#titre-${index}">#</a>`
+    })
+
+    console.log(titlesSaved)
 
 
-    paragraphes.forEach((value,key) =>
-    {
-        console.log(value,key)
+    // const sub = content.querySelector('h3')
+    // sub.classList.add("color") // génère une erreur, sub ne contient pas d'élément
 
-        //value.classList.add("color")
-        value.onmouseover = () =>{
+    paragraphes.forEach((value,key) => {
+        // value.classList.add("color")
+
+        value.onmouseover = ()=>{
             value.classList.add('hover')
         }
-        value.onmouseleave = () =>{
+        value.onmouseleave = ()=>{
             value.classList.remove('hover')
         }
-        value.querySelectorAll('strong').forEach((strong,n) =>{
-            strong.classList.add('color')
+
+        value.querySelectorAll('strong').forEach((strong,n) => {
+            strong.classList.add("color")
+        })
     })
-    })
-    titre.forEach((value,key)=>{
-        value.classList.add('color')
-    })
-    console.log(paragraphes)
-    console.log(content)
+
 </script>
 </body>
 </html>
