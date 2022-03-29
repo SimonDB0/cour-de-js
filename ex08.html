@@ -29,6 +29,14 @@
 
    const playersDom = document.querySelector('.players')
     players.forEach((value, index) => {
+    const player = document.createElement('div')
+        player.classList.add("player")
+        playersDom.appendChild(player)
+
+        player.innerHTML=`
+        <div class="name">Nom: ${value.name}</div>
+        <div class="age">age: ${value.age}</div>
+        <div class="postal">postal: ${value.postal}</div>`
 
     })
 </script>
