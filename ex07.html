@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Exerccie 07</title>
-
     <style>
         .color{
             color: crimson;
@@ -27,6 +26,15 @@
         Aliquam vitae tempus turpis, rhoncus lacinia tellus. Nunc venenatis, arcu et congue porttitor, ante tellus venenatis tellus, vel commodo dolor mi et massa. <strong>Donec maximus</strong> nisl sed sapien volutpat mollis. Quisque ac nisl consectetur felis faucibus hendrerit at at libero. Praesent nibh elit, varius eget ipsum id, aliquet consequat sapien. Suspendisse quis fringilla sem, sit amet dapibus velit. Aenean et hendrerit neque. Proin nec nisi mi.
     </p>
 
+    <h2>Gauthier</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo magni minus molestias obcaecati, quam quasi quia voluptatem. Accusantium adipisci architecto aspernatur blanditiis consequatur dolores, enim exercitationem, ipsam recusandae suscipit velit.</p>
+
+    <h2>Flooooo</h2>
+    <p>sergqergqegfqrgqrgrqegqergqegomkqrjgqmzorgn,mqeorgnmqergjlnrgequimbniumnrgqmkjqengrmkjqrgnmqrkrjngqrmlngmlqnglmqnrgmqlkenrgmqjengmkjqrehgoiqjgrùlkqrg,ùp^^rgk,</p>
+
+    <h2>Yann</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid dicta eaque esse fugit magni, nihil officia, perferendis praesentium quod ratione sint, tempore voluptatum. Architecto asperiores debitis doloribus dolorum eum explicabo hic id iusto nihil, omnis quae ratione tenetur. Ab excepturi ipsam non numquam placeat repudiandae voluptates.</p>
+
 </div>
 
 
@@ -41,11 +49,31 @@
     subtitle.forEach((h2,index) => {
         titlesSaved.push(h2.innerText)
         h2.style.color = "#0000ff"
+        h2.style.paddingLeft="15px"
         h2.setAttribute('id','titre-'+index)
         h2.innerHTML += ` <a href="#titre-${index}">#</a>`
     })
 
     console.log(titlesSaved)
+    //Menu d'ancre
+
+    const menuAncre = document.createElement("div")
+    menuAncre.classList.add('anchors')
+    menuAncre.style.display="flex"
+    menuAncre.style.flexWrap="wrap"
+    content.parentNode.insertBefore(menuAncre,content)
+    titlesSaved.forEach((title,k) =>{
+        console.log(k,title)
+        const a = document.createElement('a')
+        a.innerHTML = title
+        a.setAttribute('href',`#titre-${k}`)
+        menuAncre.appendChild(a)
+        a.style.padding="30px"
+        a.style.background="e5e5e5"
+        a.style.borderRadius="5px"
+    })
+
+
 
 
     // const sub = content.querySelector('h3')
