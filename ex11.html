@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin:0;
+            background-color: #f0d0a1;
+        }
+        .yeux{
+            position: absolute;
+            left: 50vw;
+            top: 50vh;
+            transform: translate(-50%,-50%);
+            width: 40vw;
+            height: 20vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .yeux .oeil{
+            display: block;
+            width: 45%;
+            height: 90%;
+            background-color: #fff;
+            position: relative;
+            border-radius: 50%;
+        }
+        .yeux .oeil span{
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 20%;
+            height: 20%;
+            border-radius: 50%;
+            background-color: #000;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="zone">
+        <div class="yeux">
+            <div class="oeil">
+                <span></span>
+            </div>
+           <div class="oeil">
+                <span></span>
+            </div> 
+        </div>
+        
+    </div>
+    <script>
+        const yeux = document.querySelectorAll('.oeil')
+        yeux.forEach(oeil => {
+            const move ={
+                left:0,
+                top:0
+            }
+            window.addEventListener('mousemove',e=>{
+                console.log()
+        //         const parentX = oeil.offsetParent.offsetLeft - oeil.offsetParent.offsetWidth/2
+        //         const parentY = oeil.offsetParent.offsetTop - oeil.offsetParent.offsetHeight/2
+
+        //         move.left = (e.pageX-oeil.offsetLeft-parentX) / oeil.offsetWidth * 2-1
+        //         move.top = (e.pageY-oeil.offsetTop-parentX) / oeil.offsetHeight * 2-1
+
+        //         console.log(move)
+        //     })
+        // })
+    </script>
+</body>
+</html>

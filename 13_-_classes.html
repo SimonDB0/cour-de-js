@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>Exercice 13</title>
+        
+        <style>
+            
+            
+            
+        </style>
+        
+    </head>
+    <body>
+        
+        <div class="players">
+            <template id="templatePlayer">
+                <div class="player">
+                    <h1>NOM</h1>
+                    <h2>SCORE</h2>
+                    <button class="sub">-1</button>
+                    <button class="add">+1</button>
+                </div>
+                <div class="coucou">Hello</div>
+            </template>
+        </div>
+        
+        <script type="text/javascript">
+            
+            
+            
+            
+            
+            class Player {
+                /*
+                paramètres:
+                - score (Int) - le score intiale du joueur
+                - name (String) - le nom du joueur
+                
+                */
+                #point = 0
+                player = null
+                
+                constructor(init){
+                    if("score" in init) this.#point = init.score
+                    
+                    const template = document.querySelector('#templatePlayer')
+                    this.player = document.importNode(template.content,true).firstElementChild
+                    document.querySelector('.players').appendChild(this.player)
+                    
+                    this.player.querySelector('h1').innerHTML = init.name
+                    this.player.querySelector('h2').innerHTML = this.#point
+                    this.player.querySelector('.sub').onclick = e =>{
+                        this.#subPoint()
+                    }
+                    this.player.querySelector('.add').onclick = e =>{
+                        this.#addPoint()
+                    }
+                }
+                getPoints(){
+                    return this.#point
+                }
+                #subPoint(){
+                    this.#point--
+                    if(this.#point<0) this.#point = 0
+                    this.player.querySelector('h2').innerHTML = this.#point
+                }
+                #addPoint(){
+                    this.#point++
+                    this.player.querySelector('h2').innerHTML = this.#point
+                }
+            }
+            
+//            const ludo = new Player({
+//                name: "Ludovic",
+//                score: 25
+//            })
+//            
+//            const remy = new Player({
+//                name: "Remy",
+//                score: 5
+//            })
+            
+            
+            
+            
+            
+            
+            const players = [
+                new Player({
+                    name: "Ludovic",
+                    score: 25
+                }),
+                new Player({
+                    name: "Thomas",
+                    score: 10
+                }),
+                new Player({
+                    name: "Remy",
+                    score: 5
+                })
+            ]
+            
+            console.log(players)
+            
+        </script>
+    </body>
+</html>

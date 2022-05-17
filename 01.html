@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Exerccie 01</title>
+        
+    </head>
+    <body>
+        <h1>Exercice 01</h1>
+        
+        <script type="text/javascript">
+            var a = 2
+            var b = "10,53€"
+            b = b.replace(',','.')  // les , ne sont pas interprétées, on les remplace par des .
+            b = parseFloat(b)       // on converti "10.53€" en nombre, dès qu'il repère un caractère inconnu il arrête la conversion.
+            
+            console.log(a+b)
+            console.log(b*2)
+            
+            
+            
+            // Commentaire en une ligne
+            
+            /*
+                Commentaire multiligne
+            */
+        </script>
+    </body>
+</html>

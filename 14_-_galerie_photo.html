@@ -1,0 +1,98 @@
+<head>
+    <title>08 - Galerie Photo</title>
+	<style>
+		html,body{margin:0;padding:0;height:100%;width:100%;}
+		
+		.galerie{}
+		.galerie .photos{display:flex;list-style:none;cursor:pointer;}
+
+		.galerie .zoom{display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);}
+		.galerie .zoom.actif{display:block;}
+		.galerie .zoom .photo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
+
+		.galerie .zoom .fermer{
+			cursor:pointer;position:absolute;right:0;top:0;
+			background:#000;color:#fff;font-size:50px;line-height:50px;width:50px;
+			text-align:center;font-weight:bolder;
+		}
+		.galerie .zoom .aGauche{
+			cursor:pointer;position:absolute;left:0;top:50%;transform:translate(0,-50%);z-index:10;
+			background:#000;color:#fff;font-size:50px;line-height:50px;width:50px;
+			text-align:center;font-weight:bolder;
+		}
+		.galerie .zoom .aGauche.lock{
+			opacity: 0.2;
+			pointer-events: none;
+		}
+		.galerie .zoom .aDroite{
+			cursor:pointer;position:absolute;right:0;top:50%;transform:translate(0,-50%);z-index:10;
+			background:#000;color:#fff;font-size:50px;line-height:50px;width:50px;
+			text-align:center;font-weight:bolder;
+		}
+		.galerie .zoom .aDroite.lock{
+			opacity: 0.2;
+			pointer-events: none;
+		}
+		.galerie .zoom .legende{
+			position:absolute;box-sizing:border-box;left:0;bottom:0;background:#000;color:#fff;padding:10px 10px 20px 10px;
+			width:100%;text-align:center;
+		}
+		.galerie .zoom .barre{
+			position:absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 10px;
+			background: #f00;
+		}
+	</style>
+</head>
+<body>
+	<h1>Galerie Photo</h1>
+	
+	<ul class="etapes">
+		<li>Mettre en page la galerie en CSS</li>
+		<li>Parcourir toutes les photos</li>
+		<li>Cliquer sur la photo</li>
+		<li>Insérer la photo dans une div extérieure à la galerie</li>
+		<li>Cliquer sur la croix pour fermer la photo</li>
+		<li>Cliquer les flèches pour switcher d'une photo à une autre</li>
+		<li>Ajouter la légende depuis le ALT de la photo</li>
+		<li>Utiliser les flèches du clavier pour changer la photo</li>
+	</ul>
+	
+	<div class="galerie" data-time="5000" >
+		<ul class="photos">
+			<li><img src="https://picsum.photos/id/989/50/50" data-link="https://picsum.photos/id/989/500/500" alt="Lac" /></li>
+			<li><img src="https://picsum.photos/id/990/50/50" data-link="https://picsum.photos/id/990/500/500" alt="Mer ensoleillée" /></li>
+			<li><img src="https://picsum.photos/id/991/50/50" data-link="https://picsum.photos/id/991/500/500" alt="Colline et forêt" /></li>
+			<li><img src="https://picsum.photos/id/992/50/50" data-link="https://picsum.photos/id/992/500/500" alt="Colline la nuit" /></li>
+			<li><img src="https://picsum.photos/id/993/50/50" data-link="https://picsum.photos/id/993/500/500" alt="Route de montagne" /></li>
+			<li><img src="https://picsum.photos/id/994/50/50" data-link="https://picsum.photos/id/994/500/500" alt="Nuages vu du haut" /></li>
+			<li><img src="https://picsum.photos/id/995/50/50" data-link="https://picsum.photos/id/995/500/500" alt="Feuilles colorées" /></li>
+			<li><img src="https://picsum.photos/id/996/50/50" data-link="https://picsum.photos/id/996/500/500" alt="Jeune femme" /></li>
+			<li><img src="https://picsum.photos/id/997/50/50" data-link="https://picsum.photos/id/997/500/500" alt="Colline en bord de mer" /></li>
+			<li><img src="https://picsum.photos/id/998/50/50" data-link="https://picsum.photos/id/998/500/500" alt="cahiers reliés" /></li>
+			<li><img src="https://picsum.photos/id/999/50/50" data-link="https://picsum.photos/id/999/500/500" alt="Dessert à base de poire" /></li>
+		</ul>
+		<div class="zoom actif">
+			<div class="photo"></div>
+			<div class="fermer">X</div>
+			<div class="aGauche"> < </div>
+			<div class="aDroite"> > </div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	const images = document.querySelectorAll('galerie .photos li img')
+	images.forEach(image => {
+	image.addEventListener('click',e=>{
+		
+		})
+	})
+	</script>
+
+	
+	
+</body>
+</html>

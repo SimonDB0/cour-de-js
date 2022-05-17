@@ -1,0 +1,187 @@
+<html>
+    <head>
+        <title>Exerccie 12</title>
+        
+        <style>
+            
+            body{
+                font: 16px Arial;
+            }
+            
+            .header{
+                position: fixed;
+                z-index: 100;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+            .header .burger{
+                position: absolute;
+                z-index: 101;
+                right: 0;
+                top: 0;
+                cursor: pointer;
+                width: 50px;
+                height: 50px;
+            }
+            .header .burger:before,.header .burger:after{
+                content: "";
+                display: block;
+                background: #390c0c;
+                width: 60%;
+                height: 6%;
+                position: absolute;
+                left: 20%;
+                top: 47%;
+                transition: 0.3s ease-in-out;
+                transition-property: transform, background;
+            }
+            .header .burger:before{
+                transform: translate(0,-150%);
+            }
+            .header .burger:after{
+                transform: translate(0,150%);
+            }
+            .menuOpen .header .burger:before,.menuOpen .header .burger:after{
+                background: #ffffff;
+            }
+            .menuOpen .header .burger:before{
+                transform: translate(0,0%) rotate(-45deg);
+            }
+            .menuOpen .header .burger:after{
+                transform: translate(0,0%) rotate(-135deg);
+            }
+            
+            .header .menu{
+                pointer-events: none;
+                z-index: 100;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                right: -200px;
+                width: 200px;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                background: #390c0c;
+                color: #ffffff;
+                transition: 0.3s ease-in-out;
+                transition-property: right, opacity;
+            }
+            .header .menu ul{
+                list-style: none;
+                width: 100%;
+                font-size: 30px;
+                padding: 0;
+                margin: 0;
+                border-bottom: 1px solid #ffffff;
+            }
+            .header .menu li{
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                border-top: 1px solid #ffffff;
+            }
+            .header .menu a{
+                display: block;
+                color: inherit;
+                padding: 10px 20px;
+                text-decoration: none;
+                transition: 0.2s ease-in-out;
+                transition-property: background, color;
+            }
+            .header .menu a:hover{
+                background: #ffffff;
+                color: #390c0c;
+            }
+            
+            .menuOpen .header .menu{
+                right: 0;
+                opacity: 1;
+                pointer-events: all;
+            }
+            body:before{
+                content: "";
+                display: block;
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                left: 0;
+                top: 0;
+                z-index: 99;
+                background: #000000;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease-in-out;
+            }
+            .menuOpen:before{
+                pointer-events: all;
+                opacity: 0.5;
+            }
+            
+            
+            
+            
+            .footer .socials .facebook{
+                opacity: 0;
+                position: fixed;
+                z-index: 102;
+                top: 50px;
+                left: -50px;
+                pointer-events: none;
+                transform: rotate(0deg);
+                transform-origin: left bottom;
+                transition: 0.5s ease-in-out;
+                transition-property: left, transform, opacity;
+            }
+            .footer .socials .facebook svg{
+                fill: #fff;
+                width: 100px;
+                height: 100px;
+            }
+            .menuOpen .footer .socials .facebook{
+                opacity: 1;
+                pointer-events: all;
+                left: -20px;
+                transform: rotate(30deg);
+            }
+            
+        </style>
+        
+    </head>
+    <body class="">
+        
+        <div class="header">
+            <div class="burger"></div>    
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Références</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="socials">
+                <a class="facebook" href="#facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            
+            const header = document.querySelector('.header')
+            const burger = document.querySelector('.header .burger')
+            
+            burger.addEventListener('click',e => {
+                document.body.classList.toggle('menuOpen')
+            })
+            
+            document.addEventListener('click',e => {
+                if(!header.contains(e.target)) document.body.classList.remove('menuOpen')
+            })
+            
+        </script>
+    </body>
+</html>

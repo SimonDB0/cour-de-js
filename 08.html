@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <title>Exerccie 08</title>
+        
+        <style>
+            body{
+                padding: 1rem;
+                margin: 0;
+            }
+            .newPlayer{
+                display: flex;
+                column-gap: 1rem;
+                margin-bottom: 1rem;
+            }
+            .newPlayer input, .newPlayer button{
+                flex-grow: 1;
+                width: 1rem;
+                border: 0px none;
+                background: #f5f5f5;
+                padding: 0.3rem 0.5rem;
+            }
+            .players{
+                display: flex;
+                column-gap: 1rem;
+            }
+            .players .player{
+                flex-grow: 1;
+                text-align: center;
+                background: #f5f5f5;
+                padding: 1rem;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <h1>Exercice 08</h1>
+        
+        <div class="newPlayer">
+            <input type="text" placeholder="Nom du joueur" name="addName" class="addName" />
+            <input type="number" placeholder="Âge du joueur" name="addAge" class="addAge" />
+            <button class="addPlayer">Ajouter</button>
+        </div>
+        <div class="players">
+         
+        </div>
+        
+        <script type="text/javascript">
+            
+            let players = [
+                {
+                    name : "Ludo",
+                    age : 34,
+                    score : 0
+                },
+                {
+                    name : "Martin",
+                    age : 48,
+                    score : 0
+                },
+                {
+                    name : "Odile",
+                    age : 28,
+                    score : 0
+                }
+            ]
+            if(localStorage.getItem('players')){
+                players = JSON.parse(localStorage.getItem('players'))
+            }
+            
+            const playersDom = document.querySelector('.players')
+            
+            const showPlayers = ()=>{
+                players.forEach((value,key)=>{
+                    const player = document.createElement('div')
+                    player.classList.add("player")
+                    playersDom.appendChild(player)
+
+                    player.innerHTML = `
+                        <div class="name">Nom : ${value.name}</div>
+                        <div class="age">Age : ${value.age}</div>
+                    `
+
+                    const btnPlus = document.createElement('button')
+                    btnPlus.innerHTML = "+"
+                    player.appendChild(btnPlus)
+
+                    const score = document.createElement('span')
+                    score.innerHTML = value.score
+                    player.appendChild(score)
+
+                    const btnMoins = document.createElement('button')
+                    btnMoins.innerHTML = "-"
+                    player.appendChild(btnMoins)
+
+
+                    const btnSupprime = document.createElement('button')
+                    btnSupprime.innerHTML = "X"
+                    player.prepend(btnSupprime)
+
+
+                    btnPlus.onclick = ()=>{
+                        value.score++
+                        score.innerHTML = value.score
+                        updateScore()
+                    }
+                    btnMoins.onclick = ()=>{
+                        value.score--
+                        if(value.score<0) value.score = 0
+    //                    value.score = Math.max(0,value.score) // autre solution de la limitation à un nombre entier positif
+                        score.innerHTML = value.score
+                        updateScore()
+                    }
+
+                    btnSupprime.onclick = ()=>{
+                        console.log("suppression joueur "+key)
+                        players.splice(key,1)
+
+                        playersDom.innerHTML = ""
+                        showPlayers()
+                        updateScore()
+                    }
+
+                })
+            }
+            showPlayers()
+            
+            const updateScore = ()=>{
+                localStorage.setItem('players',JSON.stringify(players))
+            }
+            
+            const newPlayer = document.querySelector('.newPlayer')
+            const inputName = newPlayer.querySelector('.addName')
+            const inputAge = newPlayer.querySelector('.addAge')
+            const addPlayer = newPlayer.querySelector('.addPlayer')
+            
+            addPlayer.onclick = () =>{
+                const player = {
+                    name : inputName.value,
+                    age : parseInt(inputAge.value),
+                    score : 0
+                }
+                players.push(player)
+                console.log(players)
+                
+                playersDom.innerHTML = ""
+                showPlayers()
+                updateScore()
+            }
+            
+            
+        </script>
+    </body>
+</html>

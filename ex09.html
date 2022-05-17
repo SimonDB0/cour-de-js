@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .zoneParallax{
+            width: 100%;
+            height: 50vh;
+            position: relative;
+            background-color: grey;
+            overflow: hidden;
+        }
+        .obj1{
+            border-radius: 10px;
+            width:100px;
+            height: 100px;
+            background: #100;
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .obj2{
+            border-radius: 10px;
+            width:100px;
+            height: 100px;
+            position: absolute;
+            background:#00f;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+<h1>Exercice 9 : Paralaxe</h1>
+
+<div class="zoneParallax">
+    <div class="parallax obj1" data-move="20" data-y="50" data-x="50"></div>
+    <div class="parallax obj2" data-move="-20" data-y="50" data-x="50"></div>
+
+</div>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<div class="zoneParallax">
+    <div class="parallax obj1" data-move="20" data-y="50" data-x="50"></div>
+    <div class="parallax obj2" data-move="-20" data-y="50" data-x="50"></div>
+
+</div>
+<script>
+
+    const zoneParallax=document.querySelectorAll('.zoneParallax')
+    zoneParallax.forEach(zone=>{
+        const parallax=zone.querySelectorAll('.parallax')
+
+        const move = {
+            left:0,
+            top:0
+        }
+
+        window.addEventListener('mousemove',e=>{
+            move.left=((e.pageX-zone.offsetLeft)/zone.offsetWidth -0.5)*2
+            move.top=((e.pageY-zone.offsetTop)/zone.offsetHeight -0.5)*2
+
+            // console.log(move.left,move.top)
+
+            moveOBJ()
+        })
+
+        const moveOBJ = () =>{
+
+
+            parallax.forEach(elem=>{
+                const delta= parseInt(elem.getAttribute('data-move'))
+                console.log(elem)
+                const x=parseInt(elem.getAttribute('data-x'))
+                const y=parseInt(elem.getAttribute('data-y'))
+                elem.style.left = x+move.left*delta+'%'
+                elem.style.top = y+move.top*delta+'%'
+
+            })
+            // obj1.style.left = x/2 + zoneParallax.offsetWidth/4- zoneParallax.offsetWidth + "px"
+            // obj1.style.top = y/2 + zoneParallax.offsetHeight/4- zoneParallax.offsetTop + "px"
+
+            //  obj2.style.left = x/3 + zoneParallax.offsetWidth/3 -zoneParallax.offsetLeft +"px"
+            //   obj2.style.top = y/3 + zoneParallax.offsetHeight/3- zoneParallax.offsetTop +"px"
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

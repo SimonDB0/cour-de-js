@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Exerccie 03</title>
+        
+    </head>
+    <body>
+        <h1>Exercice 03</h1>
+
+        
+        <script type="text/javascript">
+            let name = "Wellens"
+            let firstname = "Ludovic"
+            let price = "$250,25"
+            // $1 = 0,92€
+            price = price.replace('$',"").replace(',',".")
+            price = parseFloat(price) * 0.92
+            
+            // document.write("Bonjour "+firstname+" "+name+"<br/>")
+            document.write(`
+                <h2>Bonjour ${firstname} ${name}</h2>
+                <p>Vous nous devez ${price.toFixed(2)} €</p>
+            `)
+            
+        </script>
+    </body>
+</html>
